@@ -11,6 +11,7 @@ import {
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage';
 import authReducer from './auth/auth-slice';
+import { contactsApi } from './contacts/contacts-slice';
 
 const persistConfig = {
   key: 'token',
@@ -22,13 +23,14 @@ const persistedAuthReducer = persistReducer(persistConfig, authReducer);
 
 const store = configureStore({
   reducer: {
-    auth: persistedAuthReducer
+    auth: persistedAuthReducer,
+    [contactsApi.reducerPath]: contactsApi.reducer,
   },
   middleware: getDefaultMiddleware => [...getDefaultMiddleware({
     serializableCheck: {
       ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
     },
-  }),]
+  }), contactsApi.middleware]
 });
 
 const persistor = persistStore(store);
