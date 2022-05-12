@@ -21,7 +21,7 @@ export const contactsApi = createApi({
         url: '/contacts',
         method: 'GET',
       }),
-      providesTags: '[Conatcts]'
+      providesTags: ['Contacts']
     }),
     deleteContact: builder.mutation({
       query: (id) => ({
