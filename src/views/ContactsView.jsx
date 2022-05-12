@@ -1,4 +1,3 @@
-import { ToastContainer } from 'react-toastify';
 import { useState } from 'react';
 import Section from "components/Section/Section";
 import ContactsList from "components/ContactsList/ContactsList";
@@ -21,8 +20,6 @@ export default function ContactsView() {
       <Section>
         <Filter filterValue={filter} onFilterContact={setFilter}/>
       </Section>
-      
-      <ToastContainer/>
     </>
   )
 }

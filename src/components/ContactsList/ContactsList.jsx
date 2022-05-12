@@ -10,7 +10,9 @@ export default function ContactsList({ filter }) {
     selectFromResult: ({data, isFetching}) => ({
       contacts: data && data.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase())),
       isFetching
-    })
+    }),
+    
+    refetchOnMountOrArgChange :true,
   });
 
   return (

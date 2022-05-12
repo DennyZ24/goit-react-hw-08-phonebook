@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import authOpreation from "redux/auth/auth-operation";
+import authSelectors from "redux/auth/auth-selectors";
 
 const styles = {
   form: {
@@ -19,6 +21,8 @@ export default function SignUpForm() {
   const [password, setPassword] = useState('');
 
   const dispatch = useDispatch();
+
+  const error = useSelector(authSelectors.getError)
   
   const handleChange = ({target: {name, value}}) => {
     switch (name) {
@@ -41,8 +45,10 @@ export default function SignUpForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(authOpreation.register({name,email,password}));
-  }
+    dispatch(authOpreation.register({ name, email, password }));
+  };
+
+  error && toast.error('Ошибка регистрации')
 
   return (
      <div>

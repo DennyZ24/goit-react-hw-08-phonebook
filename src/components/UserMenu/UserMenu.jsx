@@ -22,7 +22,7 @@ export default function UserMenu() {
 
   return (
     <div style={styles.container}>
-      <span style={styles.name}>Добро пожаловать, {userEmail}</span>
+      <span style={styles.name}>{userEmail}</span>
       <button type="button" onClick={()=>dispatch(authOpreation.logOut())}>
         Выйти
       </button>
